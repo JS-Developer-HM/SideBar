@@ -1,0 +1,89 @@
+@mixin sideContent {
+  .side-content {
+    flex-grow: 1;
+    padding: 0 12px;
+    .side-items {
+      > .menu-nav {
+        list-style: none;
+        margin: 0;
+        padding: 0 0 12px 0;
+        border-bottom: 1px solid $side-border;
+
+        > .menu-item {
+          display: flex;
+          flex-direction: column;
+          padding: 0;
+          transition: background-color 0.3s;
+          margin-bottom: 5px;
+          position: relative;
+          cursor: pointer;
+
+          > .menu-link {
+            padding: 12px;
+            font-size: 1.2em;
+            text-decoration: none;
+            color: $side-dark;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            display: flex;
+            > i {
+              transition: all 0.3s;
+            }
+            .menu-icon {
+              width: 24px;
+              padding-right: 16px;
+              box-sizing: content-box;
+            }
+            .menu-text {
+              flex-grow: 1;
+            }
+            &:hover {
+              background-color: $side-input;
+              color: $side-placeholder;
+              border-radius: 5px;
+            }
+
+            &.active {
+              background-color: $side-active;
+              color: $side-light;
+              border-radius: 5px;
+              & > i {
+                transform: rotate(90deg);
+              }
+            }
+          }
+          .menu-submenu {
+            .menu-subnav {
+              list-style: none;
+              margin: 0;
+              padding: 12px 0;
+              margin-left: 20px;
+
+              .menu-link {
+                display: flex;
+                align-items: center;
+                color: $side-dark;
+                text-decoration: none;
+                font-weight: bold;
+                padding: 12px 0;
+
+                &:hover {
+                  color: $side-light;
+                }
+              }
+              .menu-dot {
+                width: 4px;
+                height: 4px;
+                background: $side-dark;
+                display: inline-block;
+                margin-right: 12px;
+                border-radius: 50%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

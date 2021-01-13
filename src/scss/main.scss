@@ -1,0 +1,134 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap");
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css");
+
+@import "./config/config";
+
+@import "./sideheder";
+@import "./sidecontent";
+@import "./sidefooter";
+
+* {
+  font-family: "Roboto", sans-serif;
+}
+
+#sidebar {
+  background-color: $side-bg;
+  width: $side-width;
+  height: 100vh;
+  position: absolute;
+  animation: slideRight 0.5s ease forwards;
+  left: 0;
+  transition: left 0.5s ease;
+
+  @include sideHeader();
+  @include sideContent();
+  @include sideFooter();
+  @include media-breakpoint-up(md) {
+    &.minbar {
+      animation: slideLeft 0.5s ease forwards;
+      .side-header {
+        .dots {
+          div:last-child {
+            margin-right: 0;
+          }
+        }
+        .brand .logo {
+          display: none !important;
+        }
+        .search {
+          width: 40px;
+          height: 40px;
+          svg {
+            width: 20px;
+            fill: $side-light;
+          }
+          input {
+            display: none;
+          }
+        }
+      }
+      .side-content {
+        .menu-link {
+          display: flex;
+          justify-content: center;
+          .menu-icon {
+            padding-right: 0 !important;
+          }
+        }
+        .menu-submenu {
+          display: none;
+        }
+
+        .menu-text,
+        .menu-link > i {
+          display: none;
+        }
+      }
+
+      .side-footer {
+        .info,
+        .f-icon {
+          display: none;
+        }
+        .f-logo {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  @include media-breakpoint-down(md) {
+    .side-header .toggle-icon {
+      display: none;
+    }
+    &.toggle {
+      left: -$side-width;
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .sidebar-toggle {
+    display: none !important;
+  }
+}
+
+.sidebar-toggle {
+  background: rgb(18 18 18 / 25%);
+  top: 11px;
+  position: absolute;
+  right: 10px;
+  font-size: 2em;
+  color: #c1c1c1;
+  width: 45px;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+
+  &:hover,
+  &:active {
+    background-color: rgb(18 0.18 18 / 40%);
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    width: $side-width;
+  }
+
+  to {
+    width: $side-min-width;
+  }
+}
+
+@keyframes slideRight {
+  from {
+    width: $side-min-width;
+  }
+
+  to {
+    width: $side-width;
+  }
+}
